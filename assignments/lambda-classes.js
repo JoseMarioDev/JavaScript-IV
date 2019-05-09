@@ -1,4 +1,3 @@
-
 class Person {
   constructor(attr) {
     this.name = attr.name;
@@ -24,35 +23,65 @@ const kimberly = new Person({
 console.log(jose.speak());
 console.log(kimberly.speak());
 
-
 //create instructors extends person
 //create 2 - 3 objects
 
 class Instructors extends Person {
   constructor(attr) {
-    super(attr)
+    super(attr);
     this.specialty = attr.specialty;
-    this.favLanguage = attr.favLanguage;    
-    this.catchPhrase = attr.catchPhrase;
-  } 
-  demo(){
-    return `Today we are learning about ${this.subject}`
+    this.favLanguage = attr.favLanguage;
+    this.catchPhrase = attr.catchPhrase;    
   }
-  grade() {
-    return `${student.name} receives a perfect score on ${this.subject}`
+  demo(subject) {
+    return `Today we are learning about ${subject}`;
+  }
+  grade(student,subject) {
+    return `${student.name} receives a perfect score on ${subject}`;
   }
 }
 
-const dan = new Instructors ({
-  specialty: 'cats',
-  favLanguage: 'jibberish',
-  catchPhrase: 'I need closure unlike my divorce'
-})
+const dan = new Instructors({
+  specialty: 'web development',
+  favLanguage: 'javascript',
+  catchPhrase: 'programming is awesome',
+  name: "dan",
+  age: 35,
+  location: 'denver'
+});
 
+const josh = new Instructors({
+  specialty: 'teaching',
+  favLanguage: 'react',
+  catchPhrase: 'programming is fun'
+});
 
+ console.log(dan.grade(jose,'javascript'))
 
 //create students extends person
 //create 2-3 objects
+
+class Students extends Person {
+  constructor(attr) {
+    super(attr);
+    this.previousBackground = attr.previousBackground;
+    this.className = attr.className;
+    this.favSubjects = attr.favSubjects;
+  }
+  listsSubjects() {}
+  PRAssignment() {
+    return `${student.name} has submitted a PR for ${subject}`;
+  }
+  sprintChallenge() {
+    return `${student.name} has begun sprint challenge on ${subject}`;
+  }
+}
+
+const luis = new Students({
+  previousBackground: 'concussion specialist',
+  className: 'web20',
+  favSubjects: 'javascript'
+});
 
 ///create project managers extends instructors
 //create 2-3 objects
