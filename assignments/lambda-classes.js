@@ -73,13 +73,13 @@ class Students extends Person {
     this.favSubjects = attr.favSubjects;
   }
   listsSubjects(student, array) {
-    return `${student.name}'s favorite subjects are ${this.favSubjects}`;
+    return `${this.name}'s favorite subjects are ${this.favSubjects}`;
   }
-  PRAssignment() {
-    return `${student.name} has submitted a PR for ${subject}`;
+  PRAssignment(student, subject) {
+    return `${this.name} has submitted a PR for ${subject}`;
   }
-  sprintChallenge() {
-    return `${student.name} has begun sprint challenge on ${subject}`;
+  sprintChallenge(student, subject) {
+    return `${this.name} has begun sprint challenge on ${subject}`;
   }
 }
 
@@ -103,17 +103,47 @@ const Mohammad = new Students({
 
 console.log(luis.listsSubjects(luis));
 console.log(Mohammad.listsSubjects(Mohammad));
+console.log(luis.PRAssignment(luis, 'JS'));
+console.log(Mohammad.sprintChallenge(Mohammad, 'React'));
 
 ///create project managers extends instructors
 //create 2-3 objects
 
-//example of creating new objects
+class ProjectManagers extends Instructors {
+  constructor(attr) {
+    super(attr);
+    this.gradClassName = attr.gradClassName;
+    this.favInstructor = attr.favInstructor;
+  }
+  standup(channel) {
+    return `${this.name} announces to ${channel}, @channel study times!`;
+  }
+  debugsCode(pm, student, subject) {
+    return `${this.name} debugs ${student.name}'s code on ${subject}`;
+  }
+}
 
-// const fred = new Instructor({
-//   name: 'Fred',
-//   location: 'Bedrock',
-//   age: 37,
-//   favLanguage: 'JavaScript',
-//   specialty: 'Front-end',
-//   catchPhrase: `Don't forget the homies`
-// });
+const frank = new ProjectManagers({
+  gradClassName: 'FSW',
+  favInstructor: 'Josh',
+  specialty: 'flex',
+  favLanguage: 'flexbox',
+  catchPhrase: 'programming is easy',
+  name: 'LeTanque',
+  age: 37,
+  location: 'california'
+});
+
+const chris = new ProjectManagers({
+  gradClassName: 'FSW',
+  favInstructor: 'Ryan',
+  specialty: 'JS Challenges',
+  favLanguage: 'javascript',
+  catchPhrase: 'whiteboards are easy',
+  name: 'chris',
+  age: 30,
+  location: 'NYC'
+});
+
+console.log(frank.standup('slack'));
+console.log(chris.debugsCode(chris, luis, 'CSS'));
